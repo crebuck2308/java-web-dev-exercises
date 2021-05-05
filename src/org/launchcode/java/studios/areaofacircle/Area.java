@@ -11,7 +11,7 @@ public class Area {
         Double pi = 3.14;
         Double area = Circle.getArea(radius);
 
-        if(radius )
+        if(radius > 0)
 
         System.out.println("The area of a circle of radius " + radius + " is: " + area);
     }
