@@ -1,5 +1,6 @@
 package org.launchcode.java.studio1b.countingcharacters;
 
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -9,19 +10,31 @@ public class CountingCharacters {
 /*
 key = character; value = number of times the character occurs
  */
-        String string = "If the product of two terms is zero then common sense" +
-                " says at least one of the two terms has to be zero to start with. " +
-                "So if you move all the terms over to one side, you can put the quadratics" +
-                " into a form that can be factored allowing that side of the equation " +
-                "to equal zero. Once you’ve done that, it’s pretty straightforward from there.";
+//        String string = "If the product of two terms is zero then common sense" +
+//                " says at least one of the two terms has to be zero to start with. " +
+//                "So if you move all the terms over to one side, you can put the quadratics" +
+//                " into a form that can be factored allowing that side of the equation " +
+//                "to equal zero. Once you’ve done that, it’s pretty straightforward from there.";
+        //Getting input from user
+        Scanner input = new Scanner (System.in);
+        System.out.println("Enter a word, phrase, or sentence: ");
+
+        String userString = input.nextLine();
 
         HashMap<Character, Integer> characterCount = new HashMap<>();
         int count;
         char ch;
+        //Making case-insensitive
+        userString = userString.toLowerCase(Locale.ROOT);
 
-        for (int i = 0; i <string.length(); i++) {
+        //exclude all non-alphabetic characters:
+        userString = userString.replaceAll("[^a-z]", "");
+
+        System.out.println(("User's string: " + userString));
+
+        for (int i = 0; i <userString.length(); i++) {
             //character = the character of string at index i
-            ch = string.charAt(i);
+            ch = userString.charAt(i);
             //if loop checks if ch is already a key
             if(characterCount.containsKey(ch)) {
                 //if true, count = the value of the associated ch (key) in characterCount (current count of the key)
